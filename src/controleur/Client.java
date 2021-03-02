@@ -8,6 +8,7 @@ public class Client
 	
 	public Client(int id_client, String nom, String prenom, String adresse, String tel, int nbCommandePassees)
 	{
+		super();
 		this.id_client = id_client;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -18,6 +19,7 @@ public class Client
 	
 	public Client(String nom, String prenom, String adresse, String tel, int nbCommandePassees)
 	{
+		super();
 		this.id_client = 0;
 		this.nom = nom;
 		this.prenom = prenom;

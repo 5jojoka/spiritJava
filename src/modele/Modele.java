@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import controleur.Client;
 import controleur.Cuisinier;
 import controleur.Produit;
 import controleur.User;
@@ -254,7 +255,6 @@ public class Modele
 		executerRequete(requete);
 	}
 
-
 	public static void updateCuisinier(Cuisinier unCuisinier) {
 		// TODO Auto-generated method stub
 		String requete ="update cuisinier set " +
@@ -266,4 +266,108 @@ public class Modele
 		executerRequete(requete);
 		
 	}
+
+	/********************************* gestion des Clients
+	 * @param unClient****************************************************/
+
+	public static void insertClient (Client unClient)
+	{
+		String requete ="insert into client values (null, '" + unClient.getNom() + "','" + unClient.getPrenom()
+				+"','" + unClient.getAdresse() + "','" + unClient.getTel() + "','" + unClient.getNbCommandePassees() +  "' );" ;
+		executerRequete(requete);
+	}
+
+	public static void deleteClient  (int id_client)
+	{
+		String requete =" delete from client where id_client = " + id_client +" ; " ;
+		executerRequete(requete);
+	}
+
+	public static void updateClient  (Client unClient)
+	{
+		String requete ="update client set nom = '" + unClient.getNom()
+				+ "', prenom = '" + unClient.getPrenom()
+				+ "', adresse = '" + unClient.getAdresse()+"', tel= " + unClient.getTel() + "', nbCommandePassees = '" + unClient.getNbCommandePassees()
+				+ "  where id_client = " + unClient.getId_client() + " ;" ;
+		executerRequete(requete);
+	}
+
+	public static Client selectWhereClient (int id_client)
+	{
+		String requete ="select * from client where id_client = "+ id_client +";" ;
+		Client unClient = null ;
+		try {
+			uneBdd.seConnecter();
+			Statement unStat = uneBdd.getMaConnexion().createStatement();
+			ResultSet unRes = unStat.executeQuery(requete);
+			if (unRes.next()) {
+				unClient = new Client (
+						unRes.getInt("id_client"), unRes.getString("nom"), unRes.getString("prenom"),
+						unRes.getString("adresse"), unRes.getString("tel"), unRes.getInt("nbCommandePassees")
+				);
+			}
+			unStat.close();
+			uneBdd.seDeconnecter();
+		}
+		catch(SQLException exp) {
+			System.out.println("Erreur d'exécution de la requete : " + requete );
+		}
+		return unClient  ;
+	}
+
+	//surcharge de la méthode avec de nouveaux arguments
+	public static Client selectWhereClient (String nom, String prenom)
+	{
+		String requete ="select * from client where nom = '"+ nom +"' and prenom = '"+prenom +"' ;" ;
+		Client unClient = null ;
+		try {
+			uneBdd.seConnecter();
+			Statement unStat = uneBdd.getMaConnexion().createStatement();
+			ResultSet unRes = unStat.executeQuery(requete);
+			if (unRes.next()) {
+				unClient = new Client (
+						unRes.getInt("id_client"), unRes.getString("nom"), unRes.getString("prenom"),
+						unRes.getString("adresse"), unRes.getString("tel"), unRes.getInt("nbCommandePassees")
+				);
+			}
+			unStat.close();
+			uneBdd.seDeconnecter();
+		}
+		catch(SQLException exp) {
+			System.out.println("Erreur d'exécution de la requete : " + requete );
+		}
+		return unClient ;
+	}
+
+	public static ArrayList<Client> selectAllClient (String mot){
+
+		String requete ;
+		if (mot.equals("")) {
+			requete ="select * from client ;" ;
+		}else {
+			requete ="select * from client where nom like '%"+mot+"%' or prenom like '%"+mot+"%' or adresse like '%" + mot + "%' ; " ;
+		}
+		ArrayList<Client> lesClients = new ArrayList<Client>();
+
+		try {
+			uneBdd.seConnecter();
+			Statement unStat = uneBdd.getMaConnexion().createStatement();
+			ResultSet desRes = unStat.executeQuery(requete);
+			while (desRes.next()) {
+				Client unClient = new Client (
+						desRes.getInt("id_client"), desRes.getString("nom"), desRes.getString("prenom"),
+						desRes.getString("adresse"), desRes.getString("tel"), desRes.getInt("nbCommandePassees")
+				);
+				lesClients.add(unClient);
+			}
+			unStat.close();
+			uneBdd.seDeconnecter();
+		}
+		catch(SQLException exp) {
+			System.out.println("Erreur d'exécution de la requete : " + requete );
+		}
+		return lesClients ;
+	}
+
+
 }

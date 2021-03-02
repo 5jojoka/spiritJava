@@ -3,6 +3,7 @@ package controleur;
 import java.util.ArrayList;
 
 import modele.Modele;
+import vue.VueClient;
 import vue.VueConnexion;
 import vue.VueCuisinier;
 import vue.VueProduit;
@@ -12,13 +13,15 @@ public class Main {
 	private static VueConnexion uneVueConnexion ;
 	private static VueProduit uneVueProduit ;
 	private static VueCuisinier uneVueCuisinier ;
+	private static VueClient uneVueClient;
 
 	public static void main (String [] args) {
 		uneVueConnexion = new VueConnexion(); 
 	}
 	
 	/***************************************************** Gestion des vues ******************************************/
-	
+	public static void instancierVueClient () {uneVueClient = new VueClient();}
+
 	public static void instancierVueProduit () 
 	{
 		uneVueProduit =new VueProduit(); 
@@ -101,5 +104,34 @@ public class Main {
 
 	public static Cuisinier selectWhereCuisinier(String nom, String prenom) {
 		return Modele.selectWhereCuisinier(nom,prenom);
+	}
+
+	/*************************************************** Controleur Client ********************************************/
+
+
+	public static ArrayList<Client> selectAllClient(String mot) {
+		// TODO Auto-generated method stub
+		return Modele.selectAllClient(mot);
+	}
+
+	public static Client selectWhereClient(String nom, String prenom) {
+		// TODO Auto-generated method stub
+		return Modele.selectWhereClient(nom,prenom);
+	}
+
+	public static void insertClient(Client unClient) {
+		// TODO Auto-generated method stub
+		Modele.insertClient(unClient);
+	}
+
+	public static void deleteClient (int id_client)
+	{
+		Modele.deleteClient(id_client);
+	}
+
+	public static void updateClient (Client unClient)
+	{
+		//ici on réalise des controles avant mise à jour
+		Modele.updateClient(unClient);
 	}
 }

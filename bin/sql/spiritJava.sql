@@ -83,6 +83,17 @@ create table user (
 );
 
 #insertion
+#insertion
 insert into cuisinier values (null,'Robert','Renaud','10 avenue du larynx','0150406071','r@gmail.com');
-insert into cuisinier values (null,'Chnor','Alphonse','18 rue de la méthamphétamine','0118201061','a@gmail.com');
+insert into cuisinier values (null,'Chnor','Alphonse','18 rue de la m?thamph?tamine','0118201061','a@gmail.com');
 insert into cuisinier values (null,'Lahieu','Patrick','61 rue du vieux-port','0125639841','p@gmail.com');
+
+insert into user values (null,'a@gmail.com','123','Durand','Gerard','admin');
+insert into user values (null,'b@gmail.com','456','Alibaba','Jones','user');
+
+insert into produit values (null,'salade',8.0,'6:00');
+insert into produit values (null,'cheese nan',11.0,'12:00');
+insert into produit values (null,'tiramitsu',4.0,'10:00');
+
+insert into client values (null, 'Pierre', 'Gerard', '10 avenue du femur', '0151006071', 4);
+insert into client values (null, 'Michelin', 'Daniel', '25 boulevard du palais zoo', '0647853210', 5);
