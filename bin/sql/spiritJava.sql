@@ -11,7 +11,7 @@ CREATE TABLE Produit(
         id_produit     Int (3)  Auto_increment  NOT NULL ,
         nom            Varchar (40) NOT NULL ,
         prix           Float NOT NULL ,
-        tpsPreparation Time NOT NULL,
+        tpsPreparation Varchar (10) NOT NULL,
 		PRIMARY KEY (id_produit)
 );
 
@@ -60,10 +60,10 @@ CREATE TABLE Cuisinier(
 
 CREATE TABLE Client(
         id_client       Int (3) Auto_increment  NOT NULL ,
-        nom		      Varchar (20) NOT NULL ,
-        prenom		   Varchar (20) NOT NULL ,
+        nom		      Varchar (30) NOT NULL ,
+        prenom		   Varchar (30) NOT NULL ,
         adresse		  Varchar (200) NOT NULL ,
-        tel		      Varchar (200) NOT NULL,
+        tel		      Varchar (10) NOT NULL,
 		nbCommandePassees 	INT NOT NULL,
 		PRIMARY KEY (id_client)
 );
@@ -81,3 +81,8 @@ create table user (
 	droits enum("admin","user","autre"), 
 	primary key (iduser)
 );
+
+#insertion
+insert into cuisinier values (null,'Robert','Renaud','10 avenue du larynx','0150406071','r@gmail.com');
+insert into cuisinier values (null,'Chnor','Alphonse','18 rue de la méthamphétamine','0118201061','a@gmail.com');
+insert into cuisinier values (null,'Lahieu','Patrick','61 rue du vieux-port','0125639841','p@gmail.com');
