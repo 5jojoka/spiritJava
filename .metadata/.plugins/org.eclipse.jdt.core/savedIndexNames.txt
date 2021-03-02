@@ -1,0 +1,5 @@
+INDEX VERSION 1.131+C:\Users\lil-k\Documents\BTS SIO\Informatique\Semestre 3\spiritJava\.metadata\.plugins\org.eclipse.jdt.core
+3394711509.index
+1067094681.index
+3460880079.index
+80915976.index
