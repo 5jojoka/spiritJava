@@ -53,7 +53,7 @@ public class VueCuisinier extends JFrame implements ActionListener {
 
 		//construction du panel ajout 
 		this.panelAjout.setBounds(40, 100, 300, 250);
-		this.panelAjout.setBackground(Color.white);
+		this.panelAjout.setBackground(new Color (158, 148, 148 ));
 		this.panelAjout.setLayout(new GridLayout(6, 2));
 		this.panelAjout.add(new JLabel("Nom : "));
 		this.panelAjout.add(this.txtNom);
@@ -73,10 +73,10 @@ public class VueCuisinier extends JFrame implements ActionListener {
 		//installer le bouton retour 
 		this.btRetour.setBounds(700, 400, 140, 30);
 		this.add(this.btRetour);
-		this.btRetour.addActionListener(this);// this -> pour agir dans la fenêtre
+		this.btRetour.addActionListener(this);// this -> pour agir dans la fenï¿½tre
 
 		//construction du panelLister 
-		this.panelLister.setBackground(Color.white);
+		this.panelLister.setBackground(new Color (158, 148, 148 ));
 		this.panelLister.setLayout(null);
 		this.add(this.panelLister);
 		this.remplirPanelLister("");
@@ -179,7 +179,7 @@ public class VueCuisinier extends JFrame implements ActionListener {
 		int numLigne = uneTable.getSelectedRow();
 		int idCuisinier = Integer.parseInt(unTableau.getValueAt(numLigne, 0).toString());
 		Cuisinier unCuisinier = new Cuisinier(idCuisinier, nom, prenom, adresse, tel, email);
-		//update dans la base de données
+		//update dans la base de donnï¿½es
 		Main.updateCuisinier(unCuisinier);
 
 		//modifiaction dans l'affichage tableau
@@ -197,7 +197,7 @@ public class VueCuisinier extends JFrame implements ActionListener {
 		String tel = this.txtTel.getText();
 		String email = this.txtEmail.getText();
 		Cuisinier unCuisinier = new Cuisinier(nom, prenom, adresse, tel, email);
-		//insertion dans la base de données
+		//insertion dans la base de donnï¿½es
 		Main.insertCuisinier(unCuisinier);
 
 		//recuperation de l'id a travers un select where
@@ -215,7 +215,7 @@ public class VueCuisinier extends JFrame implements ActionListener {
 		//recuperer les cuisiniers de la bdd
 		ArrayList<Cuisinier> lesCuisiniers = Main.selectAllCuisiniers(mot);
 
-		//transformation des cuisiniers en matrice de données
+		//transformation des cuisiniers en matrice de donnï¿½es
 		Object donnees[][] = new Object[lesCuisiniers.size()][6];
 		int i = 0;
 		for (Cuisinier unCuisinier : lesCuisiniers) {
