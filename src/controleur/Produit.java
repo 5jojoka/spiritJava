@@ -4,28 +4,28 @@ public class Produit
 {
 	private int id_produit; 
 	private String nom, tpsPreparation; 
-	private int prix;
+	private float prix;
 	
 	
-	public Produit(int id_produit, String nom, String tpsPreparation, int prix) {
+	public Produit(int id_produit, String nom, float prix, String tpsPreparation) {
 		this.id_produit = id_produit;
 		this.nom = nom;
-		this.tpsPreparation = tpsPreparation;
 		this.prix = prix;
+		this.tpsPreparation = tpsPreparation;
 	}
 
-	public Produit(String nom, int prix, String tpsPreparation) {
+	public Produit(String nom, float prix, String tpsPreparation) {
 		this.id_produit = 0;
 		this.nom = nom;
-		this.tpsPreparation = tpsPreparation;
 		this.prix = prix;
+		this.tpsPreparation = tpsPreparation;
 	}
 	
 	public Produit() {
 		this.id_produit = 0;
 		this.nom = "";
-		this.tpsPreparation = "";
 		this.prix = 0;
+		this.tpsPreparation = "";
 	}
 
 	public int getId_produit() {
@@ -52,11 +52,11 @@ public class Produit
 		this.tpsPreparation = tpsPreparation;
 	}
 
-	public int getPrix() {
+	public float getPrix() {
 		return prix;
 	}
 
-	public void setPrix(int prix) {
+	public void setPrix(float prix) {
 		this.prix = prix;
 	}
 }

@@ -41,7 +41,7 @@ public class Modele
 		return unUser; 
 	}
 	
-	//methode générique d'exécution de n'importe quelle requete nécessitant pas un retour de résultats 
+	//methode gï¿½nï¿½rique d'exï¿½cution de n'importe quelle requete nï¿½cessitant pas un retour de rï¿½sultats 
 	public static void executerRequete (String requete)
 	{
 		try 
@@ -90,9 +90,9 @@ public class Modele
 			Statement unStat = uneBdd.getMaConnexion().createStatement(); 
 			ResultSet unRes = unStat.executeQuery(requete);
 			if (unRes.next()) {
-				unProduit = new Produit (
-						unRes.getInt("id_produit"), unRes.getString("nom"), unRes.getString("tpsPreparation"), unRes.getInt("prix")
-						);
+				unProduit = new Produit
+						(unRes.getInt("id_produit"), unRes.getString("nom"), unRes.getFloat("prix"),
+								unRes.getString("tpsPreparation"));
 			}
 			unStat.close();
 			uneBdd.seDeconnecter();
@@ -103,10 +103,10 @@ public class Modele
 		return unProduit ; 
 	}
 	
-	//surcharge de la méthode avec de nouveaux arguments 
-	public static Produit selectWhereProduit (String nom, String tpsPreparation)
+	//surcharge de la methode avec de nouveaux arguments
+	public static Produit selectWhereProduit (String nom, Float prix)
 	{
-		String requete ="select * from produit where nom = '"+ nom +"' and tpsPreparation = '"+tpsPreparation +"' ;" ;
+		String requete ="select * from produit where nom = '"+ nom +"' and prix = '"+prix+"' ;" ;
 		Produit unProduit = null ; 
 		try {
 			uneBdd.seConnecter();
@@ -114,8 +114,7 @@ public class Modele
 			ResultSet unRes = unStat.executeQuery(requete);
 			if (unRes.next()) {
 				unProduit = new Produit (
-						unRes.getInt("id_produit"), unRes.getString("nom"), unRes.getString("tpsPreparation"), unRes.getInt("prix")
-						);
+						unRes.getInt("id_produit"), unRes.getString("nom"),  unRes.getFloat("prix"),unRes.getString("tpsPreparation"));
 			}
 			unStat.close();
 			uneBdd.seDeconnecter();
@@ -142,8 +141,7 @@ public class Modele
 			Statement unStat = uneBdd.getMaConnexion().createStatement(); 
 			ResultSet desRes = unStat.executeQuery(requete);
 			while (desRes.next()) {
-				Produit unProduit = new Produit (desRes.getInt("id_produit"), desRes.getString("nom"), desRes.getString("tpsPreparation"), 
-						desRes.getInt("prix"));
+				Produit unProduit = new Produit (desRes.getInt("id_produit"), desRes.getString("nom"), desRes.getFloat("prix"), desRes.getString("tpsPreparation"));
 				lesProduits.add(unProduit);
 			}
 			unStat.close();

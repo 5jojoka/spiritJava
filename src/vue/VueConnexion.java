@@ -31,15 +31,13 @@ public class VueConnexion extends JFrame implements ActionListener, KeyListener
 	
 	private JButton btClient = new JButton("Gestion Clients");
 	private JButton btProduit = new JButton("Gestion Produits"); 
-	private JButton btCuisinier = new JButton("Gestion Cuisinier"); 
-//	private JButton btCommander = new JButton("Gestion des Commandes"); 
+	private JButton btCuisinier = new JButton("Gestion Cuisinier");
 	private JButton btPreparer = new JButton("Affectation Preparations");
 	private JButton btQuitter = new JButton("Quitter l'application"); 
-	
-	
+
 	public VueConnexion() {
 		this.setBounds(100, 200, 700, 300);
-		this.setTitle("Connexion à l'application Spirit Gourmet");
+		this.setTitle("Connexion a l'application Spirit Gourmet");
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(null);
@@ -84,12 +82,11 @@ public class VueConnexion extends JFrame implements ActionListener, KeyListener
 		this.panelMenu.setVisible(false);
 		this.add(this.panelMenu);
 		
-		//rendre les boutons ecoutables du menu 
+		//rendre les boutons ecoutables du menu
 		this.btClient.addActionListener(this);
 		this.btProduit.addActionListener(this);
 		this.btCuisinier.addActionListener(this);
 		this.btQuitter.addActionListener(this);
-		
 		
 		this.setVisible(true);
 	}
@@ -132,10 +129,10 @@ public class VueConnexion extends JFrame implements ActionListener, KeyListener
 		
 		User unUser = Main.verifConnexion(email, mdp); 
 		if (unUser == null) {
-			JOptionPane.showMessageDialog(this, "Erreur de connexion, vérifiez vos identifiants");
+			JOptionPane.showMessageDialog(this, "Erreur de connexion, verifiez vos identifiants");
 		}else {
-			JOptionPane.showMessageDialog(this, "Bienvenue " + unUser.getNom()+"  "+unUser.getPrenom());
-			// Ouverture du menu général 
+			JOptionPane.showMessageDialog(this, "Bienvenue " + unUser.getNom()+" "+unUser.getPrenom());
+			// Ouverture du menu gï¿½nï¿½ral 
 			this.panelConnexion.setVisible(false);
 			this.panelMenu.setVisible(true);
 			this.txtEmail.setText("");
@@ -151,11 +148,10 @@ public class VueConnexion extends JFrame implements ActionListener, KeyListener
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_ENTER) // touche entrée 
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) // touche entrï¿½e 
 		{
 			this.traitement();
 		}
-		
 	}
 
 	@Override

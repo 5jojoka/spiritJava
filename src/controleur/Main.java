@@ -63,11 +63,10 @@ public class Main {
 		return Modele.selectWhereProduit(id_produit);
 	}
 	
-	public static Produit selectWhereProduit (String nom, String tpsPreparation)
+	public static Produit selectWhereProduit (String nom, Float prix)
 	{
-		return Modele.selectWhereProduit(nom, tpsPreparation);
+		return Modele.selectWhereProduit(nom, prix);
 	}
-	
 	
 	public static ArrayList<Produit> selectAllProduits  (String mot)
 	{
