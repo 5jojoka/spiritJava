@@ -35,7 +35,8 @@ public class VueProduit extends JFrame implements ActionListener
 	private JTextField txtTpsPreparation= new JTextField(); 
 	
 	private JTable uneTable ; 
-	private JScrollPane uneScroll ; 
+	private JScrollPane uneScroll ;
+	//knzdchoisdnbhcoschnosdc
 	private Tableau unTableau ;
 	
 	private JTextField txtMot = new JTextField ();
