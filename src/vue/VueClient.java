@@ -55,7 +55,7 @@ public class VueClient extends JFrame implements ActionListener {
         this.getContentPane().setBackground(new Color (158, 148, 148 ));
 
         //installer le bouton retour
-        this.btRetour.setBounds(750, 440, 140, 30);
+        this.btRetour.setBounds(700, 400, 140, 30);
         this.add(this.btRetour);
         this.btRetour.addActionListener(this);
 
@@ -63,15 +63,15 @@ public class VueClient extends JFrame implements ActionListener {
         this.panelAjout.setBounds(40, 100, 300, 250);
         this.panelAjout.setBackground(new Color (158, 148, 148 ));
         this.panelAjout.setLayout(new GridLayout(7, 2));
-        this.panelAjout.add(new JLabel("Nom Client :"));
+        this.panelAjout.add(new JLabel("Nom :"));
         this.panelAjout.add(this.txtNom);
-        this.panelAjout.add(new JLabel("Prenom Client :"));
+        this.panelAjout.add(new JLabel("Prenom :"));
         this.panelAjout.add(this.txtPrenom);
-        this.panelAjout.add(new JLabel("Adresse du Client :"));
+        this.panelAjout.add(new JLabel("Adresse :"));
         this.panelAjout.add(this.txtAdresse);
         this.panelAjout.add(new JLabel("Telephone :"));
         this.panelAjout.add(this.txtTel);
-        this.panelAjout.add(new JLabel("Nb commande passees :"));
+        this.panelAjout.add(new JLabel("Nb commandes passees :"));
         this.panelAjout.add(this.txtNbCommandePassees);
         this.panelAjout.add(this.btAnnuler);
         this.panelAjout.add(this.btEnregistrer);
@@ -130,7 +130,7 @@ public class VueClient extends JFrame implements ActionListener {
                         Main.deleteClient(id_client);
                         //suppression dans la table d'affichage
                         unTableau.deleteLigne(ligne);
-                        JOptionPane.showMessageDialog(null, "Suppression réussie");
+                        JOptionPane.showMessageDialog(null, "Suppression reussie");
                     }
                 } else if (e.getClickCount() == 1) {
                     int ligne = uneTable.getSelectedRow();
@@ -158,7 +158,7 @@ public class VueClient extends JFrame implements ActionListener {
     public void remplirPanelLister(String mot) {
 
         this.panelLister.removeAll();
-        String entetes[] = {"Id_client", "Nom", "Prenom", "Adresse", "Tel", "Nb commande passee", "Heures de vol"};
+        String entetes[] = {"Id", "Nom", "Prenom", "Adresse", "Telephone", "Nb commande passee"};
         Object donnees[][] = this.getDonnees(mot);
         this.unTableau = new Tableau(donnees, entetes);
         this.uneTable = new JTable(this.unTableau);
@@ -174,7 +174,7 @@ public class VueClient extends JFrame implements ActionListener {
         //recuperer les pilotes de la bdd
         ArrayList<Client> lesClients = Main.selectAllClient(mot);
         //transofrmation des pilotes en matrice de données
-        Object donnees[][] = new Object[lesClients.size()][7];
+        Object donnees[][] = new Object[lesClients.size()][6];
         int i = 0;
         for (Client unClient : lesClients) {
             donnees[i][0] = unClient.getId_client() + "";
@@ -215,7 +215,7 @@ public class VueClient extends JFrame implements ActionListener {
         try {
             nbCommandePassees = Integer.parseInt(this.txtNbCommandePassees.getText());
         } catch (NumberFormatException exp) {
-            JOptionPane.showMessageDialog(this, "Attention au format du nombre de comande passees !");
+            JOptionPane.showMessageDialog(this, "Attention au format du nombre de commandes passees !");
             nbCommandePassees = -1;
         }
         if (nbCommandePassees >= 0) {
@@ -229,7 +229,7 @@ public class VueClient extends JFrame implements ActionListener {
             Object ligne[] = {unClient.getId_client(), nom, prenom, adresse, tel, nbCommandePassees + ""};
             this.unTableau.updateLigne(numLigne, ligne);
 
-            JOptionPane.showMessageDialog(this, "Modification réussie !");
+            JOptionPane.showMessageDialog(this, "Modification reussie !");
             this.viderLesChamps();
         } else {
             this.txtNbCommandePassees.setBackground(Color.red);
@@ -246,7 +246,7 @@ public class VueClient extends JFrame implements ActionListener {
         try {
             nbCommandePassees = Integer.parseInt(this.txtNbCommandePassees.getText());
         } catch (NumberFormatException exp) {
-            JOptionPane.showMessageDialog(this, "Attention au format du nombre d'heures de vols !");
+            JOptionPane.showMessageDialog(this, "Attention au format du nombre de commandes passees !");
             nbCommandePassees = -1;
         }
         if (nbCommandePassees >= 0) {
@@ -261,7 +261,7 @@ public class VueClient extends JFrame implements ActionListener {
             Object ligne[] = {unClient.getId_client(), nom, prenom, adresse, tel, nbCommandePassees + ""};
             this.unTableau.insertLigne(ligne);
 
-            JOptionPane.showMessageDialog(this, "Insertion réussie !");
+            JOptionPane.showMessageDialog(this, "Insertion reussie !");
             this.viderLesChamps();
         } else {
             this.txtNbCommandePassees.setBackground(Color.red);

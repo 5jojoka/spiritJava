@@ -86,7 +86,11 @@ create table user (
 #insertion
 insert into cuisinier values (null,'Robert','Renaud','10 avenue du larynx','0150406071','r@gmail.com');
 <<<<<<< HEAD
+<<<<<<< HEAD
 insert into cuisinier values (null,'Chnor','Alphonse','18 rue de la m?thamph?tamine','0118201061','a@gmail.com');
+=======
+insert into cuisinier values (null,'Chnor','Alphonse','18 rue de la methamphetamine','0118201061','a@gmail.com');
+>>>>>>> fe891da137a7b12390abcab80860c355741f82b4
 =======
 insert into cuisinier values (null,'Chnor','Alphonse','18 rue de la methamphetamine','0118201061','a@gmail.com');
 >>>>>>> fe891da137a7b12390abcab80860c355741f82b4
@@ -98,10 +102,14 @@ insert into user values (null,'b@gmail.com','456','Alibaba','Jones','user');
 insert into produit values (null,'salade',8.0,'6:00');
 insert into produit values (null,'cheese nan',11.0,'12:00');
 <<<<<<< HEAD
+<<<<<<< HEAD
 insert into produit values (null,'tiramitsu',4.0,'10:00');
 
 insert into client values (null, 'Pierre', 'Gerard', '10 avenue du femur', '0151006071', 4);
 insert into client values (null, 'Michelin', 'Daniel', '25 boulevard du palais zoo', '0647853210', 5);
+=======
+insert into produit values (null,'tiramitsu',4.0,'10:00');
+>>>>>>> fe891da137a7b12390abcab80860c355741f82b4
 =======
 insert into produit values (null,'tiramitsu',4.0,'10:00');
 >>>>>>> fe891da137a7b12390abcab80860c355741f82b4
