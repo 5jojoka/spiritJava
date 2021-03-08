@@ -72,7 +72,7 @@ public class VueConnexion extends JFrame implements ActionListener, KeyListener
 		this.panelMenu.setLayout(new GridLayout(2, 2));
 		this.panelMenu.setBounds(340, 60, 300, 140);
 		this.panelMenu.setBackground(new Color (158, 148, 148 ));
-		
+
 		this.panelMenu.add(this.btClient); 
 		this.panelMenu.add(this.btProduit); 
 		this.panelMenu.add(this.btCuisinier); 
@@ -115,6 +115,11 @@ public class VueConnexion extends JFrame implements ActionListener, KeyListener
 			this.setVisible(false);
 			//on instancie la vue produit
 			Main.instancierVueCuisinier();
+		}else if (e.getSource() == this.btClient) {
+			//on rend invisible la vue connexion
+			this.setVisible(false);
+			//on instancie la vue produit
+			Main.instancierVueClient();
 		}
 	}
 	
