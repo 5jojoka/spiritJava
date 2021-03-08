@@ -124,7 +124,7 @@ public class VueClient extends JFrame implements ActionListener {
                     int ligne = uneTable.getSelectedRow();
                     System.out.println(ligne);
                     int id_client = Integer.parseInt(unTableau.getValueAt(ligne, 0).toString());
-                    int retour = JOptionPane.showConfirmDialog(null, "Voulez-vous supprimer ce pilote ?", "Suppression", JOptionPane.YES_NO_OPTION);
+                    int retour = JOptionPane.showConfirmDialog(null, "Voulez-vous supprimer ce client ?", "Suppression", JOptionPane.YES_NO_OPTION);
                     if (retour == 0) {
                         //suppression dans la base
                         Main.deleteClient(id_client);

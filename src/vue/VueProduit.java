@@ -144,7 +144,7 @@ public class VueProduit extends JFrame implements ActionListener
 	public void remplirPanelLister(String mot) {
 
 		this.panelLister.removeAll();
-		String entetes [] = {"ID", "Nom", "Prix", "Temps de prepatation"};
+		String entetes [] = {"ID", "Nom", "Prix", "Temps de preparation"};
 		Object donnees [][] = this.getDonnees (mot) ;
 		this.unTableau = new Tableau (donnees, entetes);
 		this.uneTable = new JTable(this.unTableau);
