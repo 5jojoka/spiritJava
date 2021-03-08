@@ -64,7 +64,7 @@ CREATE TABLE Client(
         prenom		   Varchar (30) NOT NULL ,
         adresse		  Varchar (200) NOT NULL ,
         tel		      Varchar (10) NOT NULL,
-		nbCommandePassees 	INT NOT NULL,
+		mail 	      Varchar(60) NOT NULL,
 		PRIMARY KEY (id_client)
 );
 
@@ -96,7 +96,7 @@ insert into produit values (null,'cheese nan',11.0,'12:00');
 
 insert into produit values (null,'tiramitsu',4.0,'10:00');
 
-insert into client values (null, 'Pierre', 'Gerard', '10 avenue du femur', '0151006071', 4);
-insert into client values (null, 'Michelin', 'Daniel', '25 boulevard du palais zoo', '0647853210', 5);
+insert into client values (null, 'Pierre', 'Gerard', '10 avenue du femur', '0151006071', 'pg@gmail.com');
+insert into client values (null, 'Michelin', 'Daniel', '25 boulevard du palais zoo', '0647853210', 'md@gmail.com');
 
 

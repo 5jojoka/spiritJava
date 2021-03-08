@@ -36,7 +36,7 @@ public class VueClient extends JFrame implements ActionListener {
     private JTextField txtPrenom = new JTextField();
     private JTextField txtAdresse = new JTextField();
     private JTextField txtTel = new JTextField();
-    private JTextField txtNbCommandePassees = new JTextField();
+    private JTextField txtMail = new JTextField();
 
     private JTable uneTable;
     private JScrollPane uneScroll;
@@ -71,8 +71,8 @@ public class VueClient extends JFrame implements ActionListener {
         this.panelAjout.add(this.txtAdresse);
         this.panelAjout.add(new JLabel("Telephone :"));
         this.panelAjout.add(this.txtTel);
-        this.panelAjout.add(new JLabel("Nb commandes passees :"));
-        this.panelAjout.add(this.txtNbCommandePassees);
+        this.panelAjout.add(new JLabel("Mail :"));
+        this.panelAjout.add(this.txtMail);
         this.panelAjout.add(this.btAnnuler);
         this.panelAjout.add(this.btEnregistrer);
         this.add(this.panelAjout);
@@ -138,7 +138,7 @@ public class VueClient extends JFrame implements ActionListener {
                     txtPrenom.setText(unTableau.getValueAt(ligne, 2).toString());
                     txtAdresse.setText(unTableau.getValueAt(ligne, 3).toString());
                     txtTel.setText(unTableau.getValueAt(ligne, 4).toString());
-                    txtNbCommandePassees.setText(unTableau.getValueAt(ligne, 5).toString());
+                    txtMail.setText(unTableau.getValueAt(ligne, 5).toString());
                     btEnregistrer.setText("Modifier");
                 }
 
@@ -158,7 +158,7 @@ public class VueClient extends JFrame implements ActionListener {
     public void remplirPanelLister(String mot) {
 
         this.panelLister.removeAll();
-        String entetes[] = {"Id", "Nom", "Prenom", "Adresse", "Telephone", "Nb commande passee"};
+        String entetes[] = {"Id", "Nom", "Prenom", "Adresse", "Telephone", "Mail"};
         Object donnees[][] = this.getDonnees(mot);
         this.unTableau = new Tableau(donnees, entetes);
         this.uneTable = new JTable(this.unTableau);
@@ -182,7 +182,7 @@ public class VueClient extends JFrame implements ActionListener {
             donnees[i][2] = unClient.getPrenom();
             donnees[i][3] = unClient.getAdresse();
             donnees[i][4] = unClient.getTel();
-            donnees[i][5] = unClient.getNbCommandePassees();
+            donnees[i][5] = unClient.getMail();
             i++;
         }
 
@@ -211,29 +211,19 @@ public class VueClient extends JFrame implements ActionListener {
         String prenom = this.txtPrenom.getText();
         String adresse = this.txtAdresse.getText();
         String tel = this.txtTel.getText();
-        int nbCommandePassees = 0;
-        try {
-            nbCommandePassees = Integer.parseInt(this.txtNbCommandePassees.getText());
-        } catch (NumberFormatException exp) {
-            JOptionPane.showMessageDialog(this, "Attention au format du nombre de commandes passees !");
-            nbCommandePassees = -1;
-        }
-        if (nbCommandePassees >= 0) {
-            int numLigne = uneTable.getSelectedRow();
-            int id_client = Integer.parseInt(unTableau.getValueAt(numLigne, 0).toString());
-            Client unClient = new Client(id_client, nom, prenom, adresse, tel, nbCommandePassees);
-            //update dans la base de données
-            Main.updateClient(unClient);
+        String mail = this.txtMail.getText();
+        int numLigne = uneTable.getSelectedRow();
+        int id_client = Integer.parseInt(unTableau.getValueAt(numLigne, 0).toString());
+        Client unClient = new Client(id_client, nom, prenom, adresse, tel, mail);
+        //update dans la base de données
+        Main.updateClient(unClient);
 
-            //modifiaction dans l'affichage tableau
-            Object ligne[] = {unClient.getId_client(), nom, prenom, adresse, tel, nbCommandePassees + ""};
-            this.unTableau.updateLigne(numLigne, ligne);
+        //modifiaction dans l'affichage tableau
+        Object ligne[] = {unClient.getId_client(), nom, prenom, adresse, tel, mail + ""};
+        this.unTableau.updateLigne(numLigne, ligne);
 
-            JOptionPane.showMessageDialog(this, "Modification reussie !");
-            this.viderLesChamps();
-        } else {
-            this.txtNbCommandePassees.setBackground(Color.red);
-        }
+        JOptionPane.showMessageDialog(this, "Modification reussie !");
+        this.viderLesChamps();
 
     }
 
@@ -242,30 +232,20 @@ public class VueClient extends JFrame implements ActionListener {
         String prenom = this.txtPrenom.getText();
         String adresse = this.txtAdresse.getText();
         String tel = this.txtTel.getText();
-        int nbCommandePassees = 0;
-        try {
-            nbCommandePassees = Integer.parseInt(this.txtNbCommandePassees.getText());
-        } catch (NumberFormatException exp) {
-            JOptionPane.showMessageDialog(this, "Attention au format du nombre de commandes passees !");
-            nbCommandePassees = -1;
-        }
-        if (nbCommandePassees >= 0) {
-            Client unClient = new Client(nom, prenom, adresse, tel, nbCommandePassees);
-            //insertion dans la base de données
-            Main.insertClient(unClient);
+        String mail = this.txtMail.getText();
+        Client unClient = new Client(nom, prenom, adresse, tel, mail);
+        //insertion dans la base de données
+        Main.insertClient(unClient);
 
-            //recuperation de l'id a travers un select where
-            unClient = Main.selectWhereClient(nom, prenom);
+        //recuperation de l'id a travers un select where
+        unClient = Main.selectWhereClient(nom, prenom);
 
-            //insertion dans l'affichage tableau
-            Object ligne[] = {unClient.getId_client(), nom, prenom, adresse, tel, nbCommandePassees + ""};
-            this.unTableau.insertLigne(ligne);
+        //insertion dans l'affichage tableau
+        Object ligne[] = {unClient.getId_client(), nom, prenom, adresse, tel, mail + ""};
+        this.unTableau.insertLigne(ligne);
 
-            JOptionPane.showMessageDialog(this, "Insertion reussie !");
-            this.viderLesChamps();
-        } else {
-            this.txtNbCommandePassees.setBackground(Color.red);
-        }
+        JOptionPane.showMessageDialog(this, "Insertion reussie !");
+        this.viderLesChamps();
 
     }
 
@@ -275,7 +255,7 @@ public class VueClient extends JFrame implements ActionListener {
         this.txtPrenom.setText("");
         this.txtAdresse.setText("");
         this.txtTel.setText("");
-        this.txtNbCommandePassees.setBackground(Color.white);
+        this.txtMail.setText("");
         this.btEnregistrer.setText("Enregistrer");
     }
 }

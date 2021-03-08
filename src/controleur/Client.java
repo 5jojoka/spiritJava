@@ -3,10 +3,9 @@ package controleur;
 public class Client
 {
 	private int id_client; 
-	private String nom, prenom, adresse, tel; 
-	private int nbCommandePassees;
+	private String nom, prenom, adresse, tel,mail;
 	
-	public Client(int id_client, String nom, String prenom, String adresse, String tel, int nbCommandePassees)
+	public Client(int id_client, String nom, String prenom, String adresse, String tel, String mail)
 	{
 		super();
 		this.id_client = id_client;
@@ -14,10 +13,10 @@ public class Client
 		this.prenom = prenom;
 		this.adresse = adresse;
 		this.tel = tel;
-		this.nbCommandePassees = nbCommandePassees;
+		this.mail = mail;
 	}
 	
-	public Client(String nom, String prenom, String adresse, String tel, int nbCommandePassees)
+	public Client(String nom, String prenom, String adresse, String tel, String mail)
 	{
 		super();
 		this.id_client = 0;
@@ -25,7 +24,7 @@ public class Client
 		this.prenom = prenom;
 		this.adresse = adresse;
 		this.tel = tel;
-		this.nbCommandePassees = nbCommandePassees;
+		this.mail = mail;
 	}
 	
 	public Client()
@@ -35,7 +34,7 @@ public class Client
 		this.prenom = "";
 		this.adresse = "";
 		this.tel = "";
-		this.nbCommandePassees = 0;
+		this.mail = "";
 	}
 
 	public int getId_client() {
@@ -78,12 +77,11 @@ public class Client
 		this.tel = tel;
 	}
 
-	public int getNbCommandePassees() {
-		return nbCommandePassees;
+	public String getMail() {
+		return mail;
 	}
 
-	public void setNbCommandePassees(int nbCommandePassees) {
-		this.nbCommandePassees = nbCommandePassees;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
-	
 }

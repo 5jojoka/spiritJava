@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/controleur/Main.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/modele/Bdd.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/modele/Modele.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/sql/spiritJava.sql" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/vue/VueConnexion.java" charset="windows-1252" />

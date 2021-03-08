@@ -65,7 +65,7 @@ public class Modele
 	public static void insertProduit (Produit unProduit)
 	{
 		String requete ="insert into produit values (null, '" + unProduit.getNom() + "','" + unProduit.getPrix()
-		+"','" + unProduit.getTpsPreparation() + " );" ;
+		+"','" + unProduit.getTpsPreparation() + "' );" ;
 		executerRequete(requete);
 	}
 	
@@ -78,7 +78,7 @@ public class Modele
 	public static void updateProduit (Produit unProduit)
 	{
 		String requete ="update produit set nom = '" + unProduit.getNom() + "', prix = '" + unProduit.getPrix()
-		+"', tpsPreparation = '" + unProduit.getTpsPreparation() + " ;" ;
+		+"', tpsPreparation = '" + unProduit.getTpsPreparation() + "' ;" ;
 		executerRequete(requete);
 	}
 	
@@ -271,7 +271,7 @@ public class Modele
 	public static void insertClient (Client unClient)
 	{
 		String requete ="insert into client values (null, '" + unClient.getNom() + "','" + unClient.getPrenom()
-				+"','" + unClient.getAdresse() + "','" + unClient.getTel() + "','" + unClient.getNbCommandePassees() +  "' );" ;
+				+"','" + unClient.getAdresse() + "','" + unClient.getTel() + "','" + unClient.getMail() +  "' );" ;
 		executerRequete(requete);
 	}
 
@@ -285,7 +285,7 @@ public class Modele
 	{
 		String requete ="update client set nom = '" + unClient.getNom()
 				+ "', prenom = '" + unClient.getPrenom()
-				+ "', adresse = '" + unClient.getAdresse()+"', tel= " + unClient.getTel() + "', nbCommandePassees = '" + unClient.getNbCommandePassees()
+				+ "', adresse = '" + unClient.getAdresse()+"', tel= " + unClient.getTel() + "', mail = '" + unClient.getMail()
 				+ "  where id_client = " + unClient.getId_client() + " ;" ;
 		executerRequete(requete);
 	}
@@ -301,7 +301,7 @@ public class Modele
 			if (unRes.next()) {
 				unClient = new Client (
 						unRes.getInt("id_client"), unRes.getString("nom"), unRes.getString("prenom"),
-						unRes.getString("adresse"), unRes.getString("tel"), unRes.getInt("nbCommandePassees")
+						unRes.getString("adresse"), unRes.getString("tel"), unRes.getString("mail")
 				);
 			}
 			unStat.close();
@@ -325,7 +325,7 @@ public class Modele
 			if (unRes.next()) {
 				unClient = new Client (
 						unRes.getInt("id_client"), unRes.getString("nom"), unRes.getString("prenom"),
-						unRes.getString("adresse"), unRes.getString("tel"), unRes.getInt("nbCommandePassees")
+						unRes.getString("adresse"), unRes.getString("tel"), unRes.getString("mail")
 				);
 			}
 			unStat.close();
@@ -354,7 +354,7 @@ public class Modele
 			while (desRes.next()) {
 				Client unClient = new Client (
 						desRes.getInt("id_client"), desRes.getString("nom"), desRes.getString("prenom"),
-						desRes.getString("adresse"), desRes.getString("tel"), desRes.getInt("nbCommandePassees")
+						desRes.getString("adresse"), desRes.getString("tel"), desRes.getString("mail")
 				);
 				lesClients.add(unClient);
 			}
