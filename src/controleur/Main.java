@@ -105,6 +105,10 @@ public class Main {
 		return Modele.selectWhereCuisinier(nom,prenom);
 	}
 
+	public static Cuisinier selectWhereCuisinier(int id_cuisinier) {
+		return Modele.selectWhereCuisinier(id_cuisinier);
+	}
+
 	/*************************************************** Controleur Client ********************************************/
 
 

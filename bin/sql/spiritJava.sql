@@ -83,8 +83,21 @@ create table user (
 );
 
 #insertion
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+insert into cuisinier values (null,'Robert','Renaud','10 avenue de Rochefort','0150406071','r@gmail.com');
+insert into cuisinier values (null,'Chnor','Alphonse','18 rue du cheval','0118201061','a@gmail.com');
+=======
+#insertion
+>>>>>>> 3cd3c2d8182955789c6d24f094511379599e7a95
 insert into cuisinier values (null,'Robert','Renaud','10 avenue du larynx','0150406071','r@gmail.com');
 insert into cuisinier values (null,'Chnor','Alphonse','18 rue de la methamphetamine','0118201061','a@gmail.com');
+<<<<<<< HEAD
+=======
+>>>>>>> fe891da137a7b12390abcab80860c355741f82b4
+>>>>>>> 9b62e8f504d88300976d2ece521568976e4e106b
+>>>>>>> 3cd3c2d8182955789c6d24f094511379599e7a95
 insert into cuisinier values (null,'Lahieu','Patrick','61 rue du vieux-port','0125639841','p@gmail.com');
 
 insert into user values (null,'a@gmail.com','123','Durand','Gerard','admin');

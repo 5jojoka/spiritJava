@@ -83,8 +83,8 @@ create table user (
 );
 
 #insertion
-insert into cuisinier values (null,'Robert','Renaud','10 avenue du larynx','0150406071','r@gmail.com');
-insert into cuisinier values (null,'Chnor','Alphonse','18 rue de la methamphetamine','0118201061','a@gmail.com');
+insert into cuisinier values (null,'Robert','Renaud','10 avenue de Rochefort','0150406071','r@gmail.com');
+insert into cuisinier values (null,'Chnor','Alphonse','18 rue du cheval','0118201061','a@gmail.com');
 insert into cuisinier values (null,'Lahieu','Patrick','61 rue du vieux-port','0125639841','p@gmail.com');
 
 insert into user values (null,'a@gmail.com','123','Durand','Gerard','admin');
