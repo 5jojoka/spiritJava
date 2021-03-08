@@ -101,4 +101,8 @@ public class Main {
 	public static Cuisinier selectWhereCuisinier(String nom, String prenom) {
 		return Modele.selectWhereCuisinier(nom,prenom);
 	}
+
+	public static Cuisinier selectWhereCuisinier(int id_cuisinier) {
+		return Modele.selectWhereCuisinier(id_cuisinier);
+	}
 }

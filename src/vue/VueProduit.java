@@ -259,6 +259,7 @@ public class VueProduit extends JFrame implements ActionListener
 	public void viderLesChamps() {
 		//vider l'ensemble des champs du formulaire
 		this.txtNom.setText("");
+		this.txtPrix.setText("");
 		this.txtTpsPreparation.setText("");
 		this.txtPrix.setBackground(Color.white);
 		this.btEnregistrer.setText("Enregistrer");

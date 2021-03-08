@@ -23,16 +23,15 @@ public class VueConnexion extends JFrame implements ActionListener, KeyListener
 {
 	private JButton btSeConnecter = new JButton("Se Connecter"); 
 	private JButton btAnnuler = new JButton("Annuler"); 
-	private JTextField txtEmail = new JTextField("a@gmail.com"); 
-	private JPasswordField txtMdp = new JPasswordField("123"); 
+	private JTextField txtEmail = new JTextField(); //a@gmail.com
+	private JPasswordField txtMdp = new JPasswordField(); //123
 	
 	private JPanel panelConnexion = new JPanel(); 
 	private JPanel panelMenu = new JPanel (); 
 	
-	private JButton btClient = new JButton("Gestion Clients");
-	private JButton btProduit = new JButton("Gestion Produits"); 
-	private JButton btCuisinier = new JButton("Gestion Cuisinier");
-	private JButton btPreparer = new JButton("Affectation Preparations");
+	private JButton btClient = new JButton("Clients");
+	private JButton btProduit = new JButton("Produits");
+	private JButton btCuisinier = new JButton("Cuisinier");
 	private JButton btQuitter = new JButton("Quitter l'application"); 
 
 	public VueConnexion() {
@@ -96,34 +95,30 @@ public class VueConnexion extends JFrame implements ActionListener, KeyListener
 		if (e.getSource() == this.btAnnuler) {
 			this.txtEmail.setText("");
 			this.txtMdp.setText("");
-		}else if (e.getSource() == this.btSeConnecter) {
+		} else if (e.getSource() == this.btSeConnecter) {
 			this.traitement();
-		}
-		else if (e.getSource() == this.btQuitter) {
+		} else if (e.getSource() == this.btQuitter) {
 			int retour = JOptionPane.showConfirmDialog(this, "Voulez-Vous Quitter l'Application !", "Quitter L'application", JOptionPane.YES_NO_OPTION);
 			if (retour == 0) {
 				this.panelConnexion.setVisible(true);
 				this.panelMenu.setVisible(false);
 			}
-		}else if (e.getSource() == this.btProduit) {
-			
+		} else if (e.getSource() == this.btProduit) {
+
 			//on rend invisible la vue connexion 
 			this.setVisible(false);
 			//on instancie la vue produit 
 			Main.instancierVueProduit();
-			
-		}else if (e.getSource() == this.btCuisinier) {
+
+		} else if (e.getSource() == this.btCuisinier) {
 			//on rend invisible la vue connexion
 			this.setVisible(false);
 			//on instancie la vue produit
 			Main.instancierVueCuisinier();
-
-		}else if (e.getSource() == this.btPreparer) {
-			
 		}
 	}
 	
-	public void traitement () {
+	public void traitement() {
 		String email = this.txtEmail.getText(); 
 		String mdp = new String (this.txtMdp.getPassword()); 
 		
@@ -132,7 +127,7 @@ public class VueConnexion extends JFrame implements ActionListener, KeyListener
 			JOptionPane.showMessageDialog(this, "Erreur de connexion, verifiez vos identifiants");
 		}else {
 			JOptionPane.showMessageDialog(this, "Bienvenue " + unUser.getNom()+" "+unUser.getPrenom());
-			// Ouverture du menu g�n�ral 
+			// Ouverture du menu general
 			this.panelConnexion.setVisible(false);
 			this.panelMenu.setVisible(true);
 			this.txtEmail.setText("");
@@ -148,7 +143,7 @@ public class VueConnexion extends JFrame implements ActionListener, KeyListener
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_ENTER) // touche entr�e 
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) // touche entree
 		{
 			this.traitement();
 		}

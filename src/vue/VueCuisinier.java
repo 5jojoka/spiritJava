@@ -34,7 +34,7 @@ public class VueCuisinier extends JFrame implements ActionListener {
 	private JTextField txtPrenom = new JTextField();
 	private JTextField txtAdresse = new JTextField();
 	private JTextField txtTel = new JTextField();
-	private JTextField txtEmail = new JTextField();
+	private JTextField txtMail = new JTextField();
 
 	private JTextField txtMot = new JTextField(); //pour la recherche
 
@@ -63,8 +63,8 @@ public class VueCuisinier extends JFrame implements ActionListener {
 		this.panelAjout.add(this.txtAdresse);
 		this.panelAjout.add(new JLabel("Telephone : "));
 		this.panelAjout.add(this.txtTel);
-		this.panelAjout.add(new JLabel("Email : "));
-		this.panelAjout.add(this.txtEmail);
+		this.panelAjout.add(new JLabel("Mail : "));
+		this.panelAjout.add(this.txtMail);
 
 		this.panelAjout.add(this.btAnnuler);
 		this.panelAjout.add(this.btEnregistrer);
@@ -108,7 +108,7 @@ public class VueCuisinier extends JFrame implements ActionListener {
 					txtPrenom.setText(unTableau.getValueAt(ligne, 2).toString());
 					txtAdresse.setText(unTableau.getValueAt(ligne, 3).toString());
 					txtTel.setText(unTableau.getValueAt(ligne, 4).toString());
-					txtEmail.setText(unTableau.getValueAt(ligne, 5).toString());
+					txtMail.setText(unTableau.getValueAt(ligne, 5).toString());
 					btEnregistrer.setText("Modifier");
 				}
 			}
@@ -150,13 +150,21 @@ public class VueCuisinier extends JFrame implements ActionListener {
 		if (e.getSource() == this.btRetour) {
 			this.dispose();    //retour au menu
 			Main.rendreVisible(true);
-		} else if (e.getSource() == this.btAnnuler) {
+		}
+		else if (e.getSource() == this.btAnnuler)
+		{
 			this.viderLesChamps();
-		} else if (e.getSource() == this.btEnregistrer && e.getActionCommand().equals("Enregistrer")) {
+		}
+		else if (e.getSource() == this.btEnregistrer && e.getActionCommand().equals("Enregistrer"))
+		{
 			this.insertCuisinier();
-		} else if (e.getSource() == this.btEnregistrer && e.getActionCommand().equals("Modifier")) {
+		}
+		else if (e.getSource() == this.btEnregistrer && e.getActionCommand().equals("Modifier"))
+		{
 			this.updateCuisinier();
-		} else if (e.getSource() == this.btFiltrer) {
+		}
+		else if (e.getSource() == this.btFiltrer)
+		{
 			this.remplirPanelLister(this.txtMot.getText());
 		}
 	}
@@ -167,7 +175,9 @@ public class VueCuisinier extends JFrame implements ActionListener {
 		this.txtPrenom.setText("");
 		this.txtAdresse.setText("");
 		this.txtTel.setText("");
-		this.txtEmail.setText("");
+		this.txtMail.setText("");
+
+		this.btEnregistrer.setText("Enregistrer");
 	}
 
 	public void updateCuisinier() {
@@ -175,15 +185,16 @@ public class VueCuisinier extends JFrame implements ActionListener {
 		String prenom = this.txtPrenom.getText();
 		String adresse = this.txtAdresse.getText();
 		String tel = this.txtTel.getText();
-		String email = this.txtEmail.getText();
+		String mail = this.txtMail.getText();
 		int numLigne = uneTable.getSelectedRow();
-		int idCuisinier = Integer.parseInt(unTableau.getValueAt(numLigne, 0).toString());
-		Cuisinier unCuisinier = new Cuisinier(idCuisinier, nom, prenom, adresse, tel, email);
-		//update dans la base de donn�es
+		int id_cuisinier = Integer.parseInt(unTableau.getValueAt(numLigne, 0).toString());
+		//
+		Cuisinier unCuisinier = new Cuisinier(id_cuisinier,nom, prenom, adresse, tel, mail);
+		//update dans la base de donnees
 		Main.updateCuisinier(unCuisinier);
 
 		//modifiaction dans l'affichage tableau
-		Object[] ligne = {unCuisinier.getId_cuisinier(), nom, prenom, adresse, tel, email + ""};
+		Object[] ligne = {unCuisinier.getId_cuisinier(), nom, prenom, adresse, tel, mail + ""};
 		this.unTableau.updateLigne(numLigne, ligne);
 
 		JOptionPane.showMessageDialog(this, "Modification reussie !");
@@ -195,8 +206,8 @@ public class VueCuisinier extends JFrame implements ActionListener {
 		String prenom = this.txtPrenom.getText();
 		String adresse = this.txtAdresse.getText();
 		String tel = this.txtTel.getText();
-		String email = this.txtEmail.getText();
-		Cuisinier unCuisinier = new Cuisinier(nom, prenom, adresse, tel, email);
+		String mail = this.txtMail.getText();
+		Cuisinier unCuisinier = new Cuisinier(nom, prenom, adresse, tel, mail);
 		//insertion dans la base de donn�es
 		Main.insertCuisinier(unCuisinier);
 
@@ -204,7 +215,7 @@ public class VueCuisinier extends JFrame implements ActionListener {
 		unCuisinier = Main.selectWhereCuisinier(nom, prenom);
 
 		//insertion dans l'affichage tableau
-		Object ligne[] = {unCuisinier.getId_cuisinier(), nom, prenom, adresse, tel, email + ""};
+		Object ligne[] = {unCuisinier.getId_cuisinier(), nom, prenom, adresse, tel, mail + ""};
 		this.unTableau.insertLigne(ligne);
 
 		JOptionPane.showMessageDialog(this, "Insertion reussie !");
@@ -232,7 +243,7 @@ public class VueCuisinier extends JFrame implements ActionListener {
 
 	public void remplirPanelLister(String mot) {
 		this.panelLister.removeAll();
-		String entetes[] = {"ID", "Nom", "Prenom", "Adresse", "Telephone", "Email"};
+		String entetes[] = {"ID", "Nom", "Prenom", "Adresse", "Telephone", "Mail"};
 		Object donnees[][] = this.getDonnees(mot);
 		this.unTableau = new Tableau(donnees, entetes);
 		this.uneTable = new JTable(this.unTableau);

@@ -41,7 +41,7 @@ public class Modele
 		return unUser; 
 	}
 	
-	//methode g�n�rique d'ex�cution de n'importe quelle requete n�cessitant pas un retour de r�sultats 
+	//methode generique d'execution de n'importe quelle requete necessitant pas un retour de resultats
 	public static void executerRequete (String requete)
 	{
 		try 
@@ -63,8 +63,8 @@ public class Modele
 	
 	public static void insertProduit (Produit unProduit)
 	{
-		String requete ="insert into produit values (null, '" + unProduit.getNom() + "','" + unProduit.getPrix()
-		+"','" + unProduit.getTpsPreparation() + " );" ;
+		String requete ="insert into produit values (null, '" + unProduit.getNom() + "'," + unProduit.getPrix()
+		+",'" + unProduit.getTpsPreparation() + "' );" ;
 		executerRequete(requete);
 	}
 	
@@ -76,8 +76,8 @@ public class Modele
 	
 	public static void updateProduit (Produit unProduit)
 	{
-		String requete ="update produit set nom = '" + unProduit.getNom() + "', prix = '" + unProduit.getPrix()
-		+"', tpsPreparation = '" + unProduit.getTpsPreparation() + " ;" ;
+		String requete ="update produit set nom = '" + unProduit.getNom() + "', prix = " + unProduit.getPrix()
+		+", tpsPreparation = '" + unProduit.getTpsPreparation() + "' where id_produit = "+unProduit.getId_produit()+";" ;
 		executerRequete(requete);
 	}
 	
@@ -205,7 +205,7 @@ public class Modele
 	public static void insertCuisinier(Cuisinier unCuisinier) {
 		// TODO Auto-generated method stub
 		String requete ="insert into cuisinier values (null, '" + unCuisinier.getNom() + "','" + unCuisinier.getPrenom()
-		+"','" + unCuisinier.getAdresse() + "','" + unCuisinier.getTel() + "','" +unCuisinier.getMail() + ");"; 
+		+"','" + unCuisinier.getAdresse() + "','" + unCuisinier.getTel() + "','" +unCuisinier.getMail() + "');";
 		executerRequete(requete);
 	}
 
@@ -258,9 +258,10 @@ public class Modele
 		String requete ="update cuisinier set " +
 				"nom = '" + unCuisinier.getNom() + "', " +
 				"prenom = '" + unCuisinier.getPrenom() +"', " +
-				"adresse = '" + unCuisinier.getAdresse() + ", " +
-				"tel = "+ unCuisinier.getTel()+ ", " +
-				"mail = " +unCuisinier.getMail() +" ;" ;
+				"adresse = '" + unCuisinier.getAdresse() + "', " +
+				"tel = '"+ unCuisinier.getTel()+ "', " +
+				"mail = '" +unCuisinier.getMail() +"' "+
+		 "where id_cuisinier = " + unCuisinier.getId_cuisinier() + " ;" ;
 		executerRequete(requete);
 		
 	}

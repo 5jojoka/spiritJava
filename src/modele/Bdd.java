@@ -19,7 +19,7 @@ public class Bdd
 	public void chargerPilote ()
 	{
 		try {
-			//Vérifier la présence du pilote 
+			//Verifier la presence du pilote
 			Class.forName("com.mysql.jdbc.Driver"); 
 		}
 		catch(ClassNotFoundException exp) {
@@ -35,7 +35,7 @@ public class Bdd
 		}
 		catch(SQLException exp)
 		{
-			System.out.println("Erreur de connexion à url : " + url);
+			System.out.println("Erreur de connexion a url : " + url);
 		}
 	}
 	public void seDeconnecter ()
